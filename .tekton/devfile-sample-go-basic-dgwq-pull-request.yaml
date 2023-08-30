@@ -304,6 +304,26 @@ spec:
         operator: in
         values:
         - "false"
+    - name: ecosystem-cert-preflight-checks
+      params:
+      - name: image-url
+        value: $(tasks.build-container.results.IMAGE_URL)
+      runAfter:
+      - build-container
+      taskRef:
+        params:
+        - name: name
+          value: ecosystem-cert-preflight-checks
+        - name: bundle
+          value: index.docker.io/skattoju/preflight-tekton@sha256:ec55839103f9becdf224acdb443273f705282aa25db1b264265b7fbe951c52aa
+        - name: kind
+          value: task
+        resolver: bundles
+      when:
+      - input: $(params.skip-checks)
+        operator: in
+        values:
+        - "false"
     - name: sast-snyk-check
       runAfter:
       - clone-repository
