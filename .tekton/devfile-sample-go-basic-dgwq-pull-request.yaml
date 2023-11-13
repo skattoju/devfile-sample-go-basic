@@ -15,7 +15,7 @@ metadata:
     appstudio.openshift.io/component: devfile-sample-go-basic-dgwq
     pipelines.appstudio.openshift.io/type: build
   name: devfile-sample-go-basic-dgwq-on-pull-request
-  namespace: skattoju-tenant
+  namespace: byoc
 spec:
   params:
   - name: dockerfile
