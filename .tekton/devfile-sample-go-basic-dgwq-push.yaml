@@ -301,6 +301,26 @@ spec:
         operator: in
         values:
         - "false"
+    - name: ecosystem-cert-preflight-checks
+      params:
+      - name: image-url
+        value: $(tasks.build-container.results.IMAGE_URL)
+      runAfter:
+      - build-container
+      taskRef:
+        params:
+        - name: name
+          value: ecosystem-cert-preflight-checks
+        - name: bundle
+          value: quay.io/opdev/preflight-tekton@sha256:6bffa7ed1d3cba4e237b802cdc7d036527b3cfd667bfb5f8bf5dc4277ad751e7
+        - name: kind
+          value: task
+        resolver: bundles
+      when:
+      - input: $(params.skip-checks)
+        operator: in
+        values:
+        - "false"
     - name: sast-snyk-check
       runAfter:
       - clone-repository
