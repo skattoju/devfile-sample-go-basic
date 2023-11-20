@@ -315,7 +315,7 @@ spec:
         - name: name
           value: ecosystem-cert-preflight-checks
         - name: bundle
-          value: index.docker.io/skattoju/preflight-tekton@sha256:ec55839103f9becdf224acdb443273f705282aa25db1b264265b7fbe951c52aa
+          value: quay.io/opdev/preflight-tekton@sha256:6bffa7ed1d3cba4e237b802cdc7d036527b3cfd667bfb5f8bf5dc4277ad751e7
         - name: kind
           value: task
         resolver: bundles
